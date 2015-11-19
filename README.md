@@ -1,5 +1,5 @@
-# dmv-appointment-helper
-define the dmv locations and personal info, batch check the time available  
+# San francisco bay area dmv behind wheel appointment helper
+input personal info, auto make appointment    
 "-n", "--name" "name, First-Last"  
 "-b", "--birth" "birth, yyyy-mm-dd"  
 "-dl", "--dl" "permit number, A1111111"  
