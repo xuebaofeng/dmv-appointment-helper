@@ -41,7 +41,7 @@ class FormData {
         parser.addArgument("-n", "--name").help("name, John-Smith");
         parser.addArgument("-b", "--birth").help("birth, 1988-08-08");
         parser.addArgument("-dl", "--dl").help("permit number, A1111111");
-        parser.addArgument("-p", "--phone").help("permit number, 111-111-1111");
+        parser.addArgument("-p", "--phone").help("phone number, 111-111-1111");
         Namespace ns = null;
         try {
             ns = parser.parseArgs(args);
