@@ -35,3 +35,7 @@ node_modules
 /gradlew
 /gradlew.bat
 /settings.gradle
+/*.htm
+/*.iml
+/*.ipr
+/*.iws

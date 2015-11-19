@@ -20,9 +20,8 @@ import java.util.Set;
  */
 public class Main {
 
-    org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class);
-
     private static List<String> saturdays;
+    org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class);
     private Map<String, String> cookies = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
@@ -62,7 +61,7 @@ public class Main {
             setConnection(connection);
             Connection.Response res = connection.execute();
 
-            afterPost(res, "z:/findDriveTest.htm");
+            afterPost(res, "01-findDriveTest.htm");
             Document doc = res.parse();
             Elements e = doc.select("#app_content table tbody tr td address");
             String location = e.html();
@@ -86,7 +85,7 @@ public class Main {
                         .data("requestedTime", "");
                 setConnection(connection);
                 res = connection.execute();
-                afterPost(res, "z:/checkDriveTest.htm");
+                afterPost(res, "02-checkDriveTest.htm");
                 Elements select = res.parse().select("#app_content p.alert");
                 String ok = select.html();
                 if (ok.contains("Sorry") || ok.contains("System Unavailable") || ok.contains("not available")) continue;
@@ -109,11 +108,11 @@ public class Main {
         Connection connection = Jsoup.connect("https://www.dmv.ca.gov/wasapp/foa/reviewDriveTest.do");
         setConnection(connection);
         res = connection.execute();
-        afterPost(res, "z:/reviewDriveTest.htm");
+        afterPost(res, "03-reviewDriveTest.htm");
         connection = Jsoup.connect("https://www.dmv.ca.gov/wasapp/foa/confirmDriveTest.do");
         setConnection(connection);
         res = connection.execute();
-        afterPost(res, "z:/confirmDriveTest.htm");
+        afterPost(res, "04-confirmDriveTest.htm");
         System.exit(0);
     }
 
