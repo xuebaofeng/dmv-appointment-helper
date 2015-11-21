@@ -44,6 +44,7 @@ public class DateUtil {
 
     private static Date nextSaturday() {
         Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 1);
         int i = calendar.get(Calendar.DAY_OF_WEEK);
         while (i != Calendar.SATURDAY) {
             calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + 1);

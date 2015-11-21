@@ -38,10 +38,10 @@ class FormData {
     public FormData invoke() {
         ArgumentParser parser = ArgumentParsers.newArgumentParser("Main")
                 .defaultHelp(true).description("CA dmv.");
-        parser.addArgument("-n", "--name").help("name, John-Smith");
-        parser.addArgument("-b", "--birth").help("birth, 1988-08-08");
-        parser.addArgument("-dl", "--dl").help("permit number, A1111111");
-        parser.addArgument("-p", "--phone").help("phone number, 111-111-1111");
+        parser.addArgument("-n", "--name").help("name, John-Smith").required(true);
+        parser.addArgument("-b", "--birth").help("birth, 1988-08-08").required(true);
+        parser.addArgument("-dl", "--dl").help("permit number, A1111111").required(true);
+        parser.addArgument("-p", "--phone").help("phone number, 111-111-1111").required(true);
         Namespace ns = null;
         try {
             ns = parser.parseArgs(args);
