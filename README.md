@@ -4,6 +4,7 @@ input personal info, auto make appointment
 "-b", "--birth" "birth, yyyy-mm-dd"  
 "-dl", "--dl" "permit number, A1111111"  
 "-p", "--phone" "phone number, 123-456-7890"
+"-o", "--office" "offices: 604,579,644,631,556"
 
 
 
