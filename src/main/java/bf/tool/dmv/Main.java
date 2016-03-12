@@ -30,18 +30,15 @@ public class Main {
     }
 
     private void app(String[] args) throws Exception {
-        String[] data = new String[]{
-                "604", "579", "644", "504", "556",
-                "599", "593", "548", "516", "631",
-                "632", "503", "624", "523", "592"
-        };
         FormData formData = new FormData(args).invoke();
+        String[] offices = formData.getOffices();
+
         String[] birthSplit = formData.getBirthSplit();
         String dl = formData.getDl();
         String[] nameSplit = formData.getNameSplit();
         String[] phoneSplit = formData.getPhoneSplit();
 
-        for (String i : data) {
+        for (String office : offices) {
 
             Connection connection = Jsoup.connect("https://www.dmv.ca.gov/wasapp/foa/findDriveTest.do")
                     .data("birthDay", birthSplit[2])
@@ -51,7 +48,7 @@ public class Main {
                     .data("firstName", nameSplit[0])
                     .data("lastName", nameSplit[1])
                     .data("numberItems", "1")
-                    .data("officeId", i)
+                    .data("officeId", office)
                     .data("requestedTask", "DT")
                     .data("resetCheckFields", "true")
                     .data("telArea", phoneSplit[0])
@@ -65,7 +62,7 @@ public class Main {
             Document doc = res.parse();
             Elements e = doc.select("#app_content table tbody tr td address");
             String location = e.html();
-            logger.info("Checking Location:{},{}", i, location.split("<br>")[0]);
+            logger.info("Checking Location:{},{}", office, location.split("<br>")[0]);
 
             String text = doc.select("#app_content table tbody tr td p.alert").html();
             if (!text.contains("The first available appointment for this office is on")) {
